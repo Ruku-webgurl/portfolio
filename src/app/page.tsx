@@ -27,8 +27,7 @@ export default function Home() {
         {/* Section: Projects */}
         <Projects />
 
-        {/* Section: Pricing */}
-        <Pricing />
+       
 
         {/* Section: FAQ */}
         <FAQ />

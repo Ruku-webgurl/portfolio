@@ -92,38 +92,30 @@ export default function Hero() {
       }}
       className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#050508] pt-24 pb-16 px-4 sm:px-6 lg:px-8"
     >
-      {/* 1. BRIGHT SPIDERWEB BACKGROUND WITH CINEMATIC MOTION & 3D PARALLAX */}
+      {/* 1. BRIGHT, SHARP SPIDERWEB BACKGROUND WITH INTERACTIVE 3D PARALLAX */}
       <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
-        {/* Dynamic Breathing, Drifting & Interactive Mouse Parallax */}
+        {/* Crisp Spiderweb Image without low-res blur */}
         <div
-          className="relative w-full h-full animate-bg-hero-drift transition-transform duration-700 ease-out"
+          className="relative w-full h-full transition-transform duration-500 ease-out"
           style={{
             transform: isHovered
-              ? `scale(1.06) translate(${(mousePos.x - 50) * -0.15}px, ${(mousePos.y - 50) * -0.15}px)`
+              ? `scale(1.03) translate(${(mousePos.x - 50) * -0.1}px, ${(mousePos.y - 50) * -0.1}px)`
               : undefined,
           }}
         >
           <Image
-            src="/redspider-removebghero.jpg"
+            src="/hero-web-bg.jpg"
             alt="Spiderweb Background"
             fill
             priority
-            className={`object-cover object-center transition-all duration-700 ${
+            quality={100}
+            className={`object-cover object-center transition-all duration-500 ${
               isCenterHovered
-                ? "opacity-95 contrast-135 saturate-135 brightness-110"
-                : "opacity-90 contrast-125 saturate-125"
+                ? "opacity-95 contrast-125 saturate-125 brightness-110"
+                : "opacity-85 contrast-120 saturate-120"
             }`}
           />
         </div>
-
-        {/* Central Core Radiance with Interactive Hover Color Shift & Diamond Flare */}
-        <div
-          className={`absolute top-1/2 left-1/2 w-[550px] sm:w-[800px] md:w-[950px] h-[550px] sm:h-[800px] md:h-[950px] rounded-full blur-[85px] transition-all duration-700 pointer-events-none ${
-            isCenterHovered
-              ? "bg-[radial-gradient(circle,_rgba(255,255,255,0.85)_0%,_rgba(255,30,85,0.7)_25%,_rgba(210,0,50,0.45)_50%,_transparent_75%)] scale-110 opacity-100"
-              : "bg-[radial-gradient(circle,_rgba(255,0,51,0.5)_0%,_rgba(200,10,35,0.25)_40%,_transparent_75%)] animate-crimson-center opacity-85"
-          }`}
-        />
 
         {/* Interactive Mouse-Tracking Spiderweb Spotlight */}
         <div
@@ -131,13 +123,13 @@ export default function Hero() {
             isHovered ? "opacity-100" : "opacity-0"
           }`}
           style={{
-            background: `radial-gradient(circle 380px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 30, 85, 0.45) 0%, rgba(220, 0, 50, 0.18) 40%, transparent 75%)`,
+            background: `radial-gradient(circle 380px at ${mousePos.x}% ${mousePos.y}%, rgba(255, 30, 85, 0.35) 0%, rgba(220, 0, 50, 0.12) 40%, transparent 75%)`,
           }}
         />
 
-        {/* Lightweight Edge Vignette only (Keeps center and web fully bright) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/50 via-transparent to-[#050508]/85" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_50%,_#050508_95%)]" />
+        {/* Lightweight Edge Vignette only (Keeps center and web fully bright & sharp) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/40 via-transparent to-[#050508]/85" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_45%,_#050508_95%)]" />
       </div>
 
       {/* 2. HANGING SPIDER IN TOP-RIGHT CORNER WITH GLOWING SILK & MOTION */}
@@ -153,16 +145,16 @@ export default function Hero() {
             width={200}
             height={340}
             priority
-            className="w-full h-auto object-contain drop-shadow-[0_15px_35px_rgba(255,0,51,0.7)] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_92%)]"
+            className="w-full h-auto object-contain brightness-115 contrast-115 drop-shadow-[0_15px_35px_rgba(255,0,51,0.8)]"
           />
         </div>
       </div>
 
-      {/* 3. MAIN HERO CONTENT WITH INTERACTIVE CENTER HOVER */}
+      {/* 3. MAIN HERO CONTENT - OPEN & BOXLESS (NO CONTAINER BOX) */}
       <div
         onMouseEnter={() => setIsCenterHovered(true)}
         onMouseLeave={() => setIsCenterHovered(false)}
-        className="relative z-20 max-w-4xl mx-auto flex flex-col items-center text-center mt-6 transition-transform duration-500 px-6 sm:px-12 py-8 sm:py-10 rounded-3xl bg-[#050508]/75 backdrop-blur-md border border-red-500/25 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_35px_rgba(255,0,51,0.18)]"
+        className="relative z-20 max-w-4xl mx-auto flex flex-col items-center text-center mt-6 transition-transform duration-500"
       >
         {/* Main Glowing Heading with High-Contrast Red Theme & Interactive Flare */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-4 drop-shadow-[0_0_40px_rgba(0,0,0,0.9)] cursor-default">

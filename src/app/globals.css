@@ -33,6 +33,35 @@ body {
   color: #ffffff;
 }
 
+/* Custom Crimson & Obsidian Spider Theme Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050508;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #88001a 0%, #ff0033 50%, #88001a 100%);
+  border-radius: 9999px;
+  border: 2px solid #050508;
+  box-shadow: 0 0 10px rgba(255, 0, 51, 0.4);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff1a40 0%, #ff0033 50%, #ff3355 100%);
+  box-shadow: 0 0 16px rgba(255, 0, 51, 0.85);
+}
+
+/* Firefox standard scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff0033 #050508;
+}
+
 /* Spider & Web Animations */
 @keyframes spiderHang {
   0%, 100% {

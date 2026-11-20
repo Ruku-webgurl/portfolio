@@ -16,7 +16,6 @@ const navItems: NavItem[] = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Pricing", href: "#pricing" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -112,8 +111,8 @@ export default function Navbar() {
 
             {/* Glowing Accent Indicator */}
             <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono tracking-widest uppercase text-zinc-400 group-hover:text-red-400 transition-colors">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_#ff0033]" />
-              Portfolio
+             
+              Dev-Rukayya
             </span>
           </Link>
 

@@ -15,8 +15,8 @@ export default function Footer() {
 
   const services = [
     { name: "Web Development", href: "#projects" },
-    { name: "App Development", href: "#projects" },
-    { name: "AI Development", href: "#projects" },
+    { name: "MERN Development", href: "#projects" },
+    { name: "React js Development", href: "#projects" },
     { name: "Software Development", href: "#projects" },
   ];
 
