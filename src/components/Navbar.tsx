@@ -93,26 +93,27 @@ export default function Navbar() {
           <Link
             href="#home"
             onClick={(e) => handleNavClick(e, "#home")}
-            className="group flex items-center gap-3 relative focus:outline-none"
-            aria-label="Home"
+            className="group flex items-center gap-2.5 relative focus:outline-none"
+            aria-label="Home - DEV-RUKAYYA"
           >
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-red-600 via-red-950 to-red-500/30 shadow-[0_0_15px_rgba(255,0,51,0.3)] group-hover:shadow-[0_0_25px_rgba(255,0,51,0.6)] transition-all duration-300">
-              <div className="relative w-full h-full rounded-full overflow-hidden bg-black/90 flex items-center justify-center">
-                <Image
-                  src="/logo.webp"
-                  alt="Portfolio Logo"
-                  width={44}
-                  height={44}
-                  priority
-                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
+            {/* Clean, clear unboxed logo (42x42 px) without round circle */}
+            <div className="relative w-[42px] h-[42px] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/logo-spider-r.webp"
+                alt="DEV-RUKAYYA Spider R Logo"
+                width={42}
+                height={42}
+                priority
+                className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(255,0,51,0.65)] group-hover:drop-shadow-[0_0_16px_rgba(255,0,51,0.95)] transition-all duration-300"
+              />
             </div>
 
-            {/* Glowing Accent Indicator */}
-            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono tracking-widest uppercase text-zinc-400 group-hover:text-red-400 transition-colors">
-             
-              Dev-Rukayya
+            {/* Brand Title placed immediately beside logo */}
+            <span
+              suppressHydrationWarning
+              className="text-sm font-mono tracking-widest uppercase font-bold text-white group-hover:text-red-400 transition-colors"
+            >
+              DEV-RUKAYYA
             </span>
           </Link>
 

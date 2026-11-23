@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
-import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram, } from "react-icons/fa";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,17 +13,43 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage("");
 
-    // Simulate smooth submission
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "3caedd53-3402-4320-848f-196634f5348d",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          from_name: formData.name,
+          subject: `New Portfolio Message from ${formData.name}`,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setErrorMessage(data.message || "Failed to send message. Please try again.");
+      }
+    } catch {
+      setErrorMessage("Network error occurred. Please try again or reach out directly via email.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-    }, 1000);
+    }
   };
 
   return (
@@ -65,31 +91,21 @@ export default function Contact() {
             {/* Direct Contact Items */}
             <div className="space-y-4 pt-2">
               <a
-                href="mailto:rukayyakhan@example.com"
+                href="mailto:krukayya37@gmail.com"
                 className="flex items-center gap-3.5 text-zinc-300 hover:text-white group transition-colors"
               >
                 <div className="w-9 h-9 rounded-full bg-red-950/30 border border-red-500/20 text-red-400 flex items-center justify-center group-hover:border-red-500 group-hover:bg-red-900/40 transition-all flex-shrink-0">
                   <HiOutlineMail className="text-lg" />
                 </div>
                 <span className="text-sm sm:text-base tracking-wide font-mono">
-                  rukayyakhan@example.com
+                  krukayya37@gmail.com
                 </span>
               </a>
 
-              <a
-                href="tel:+919876543210"
-                className="flex items-center gap-3.5 text-zinc-300 hover:text-white group transition-colors"
-              >
-                <div className="w-9 h-9 rounded-full bg-red-950/30 border border-red-500/20 text-red-400 flex items-center justify-center group-hover:border-red-500 group-hover:bg-red-900/40 transition-all flex-shrink-0">
-                  <HiOutlinePhone className="text-lg" />
-                </div>
-                <span className="text-sm sm:text-base tracking-wide font-mono">
-                  +91 98765 43210
-                </span>
-              </a>
+             
 
               <a
-                href="https://github.com"
+                href="https://github.com/Ruku-webgurl"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3.5 text-zinc-300 hover:text-white group transition-colors"
@@ -117,8 +133,7 @@ export default function Contact() {
               {[
                 { icon: FaTwitter, href: "https://twitter.com", label: "Twitter" },
                 { icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
-                { icon: FaWhatsapp, href: "https://wa.me/919876543210", label: "WhatsApp" },
-                { icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
+               { icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
               ].map((item, idx) => (
                 <a
                   key={idx}
@@ -155,6 +170,23 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Honeypot Bot Protection */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
+                {/* Error Banner */}
+                {errorMessage && (
+                  <div className="p-3.5 rounded-lg bg-red-950/60 border border-red-500/50 text-red-300 text-xs sm:text-sm">
+                    {errorMessage}
+                  </div>
+                )}
+
                 {/* Your Name */}
                 <div>
                   <input

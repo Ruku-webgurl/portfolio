@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HiArrowUp, HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
-import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -29,11 +29,11 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: FaGithub, href: "https://github.com", label: "GitHub" },
+    { icon: FaGithub, href: "https://github.com/Ruku-webgurl", label: "GitHub" },
     { icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn" },
     { icon: FaTwitter, href: "https://twitter.com", label: "Twitter" },
     { icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
-    { icon: FaWhatsapp, href: "https://wa.me/919876543210", label: "WhatsApp" },
+
   ];
 
   return (
@@ -57,16 +57,15 @@ export default function Footer() {
               }}
               className="inline-flex items-center gap-3.5 group focus:outline-none"
             >
-              <div className="relative w-11 h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-red-600 via-red-950 to-red-500/40 shadow-[0_0_15px_rgba(255,0,51,0.35)] group-hover:shadow-[0_0_25px_rgba(255,0,51,0.6)] transition-all duration-300">
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
-                  <Image
-                    src="/logo.webp"
-                    alt="Logo"
-                    width={44}
-                    height={44}
-                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
+              {/* Clean unboxed Spider R Logo */}
+              <div className="relative w-11 h-11 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/logo-spider-r.webp"
+                  alt="DEV-RUKAYYA Logo"
+                  width={44}
+                  height={44}
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(255,0,51,0.6)] group-hover:drop-shadow-[0_0_16px_rgba(255,0,51,0.9)] transition-all duration-300"
+                />
               </div>
               <div>
                 <span className="text-xl font-bold tracking-tight text-white group-hover:text-red-300 transition-colors">
@@ -91,10 +90,10 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <HiOutlineMail className="text-red-400 text-base" />
                 <a
-                  href="mailto:rukayyakhan@example.com"
+                  href="mailto:krukayya37@gmail.com"
                   className="hover:text-white transition-colors"
                 >
-                  rukayyakhan@example.com
+                  krukayya37@gmail.com
                 </a>
               </div>
             </div>
@@ -175,7 +174,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Back To Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
-          <div>
+          <div suppressHydrationWarning>
             © {new Date().getFullYear()} Rukayya Khan. All rights reserved.
           </div>
 
